@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --felt-green: #08170f;
+  --gold-accent: #dfb461;
+}
+
+body {
+  background-color: #060e0a;
+  color: #f1f5f3;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Tabular numbers for non-jumping clock digits */
+.font-tabular {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Luxury poker card backdrop styling */
+.felt-card {
+  background: radial-gradient(120% 120% at 50% 10%, rgba(20, 48, 33, 0.45) 0%, rgba(10, 22, 16, 0.85) 100%);
+  border: 1px solid rgba(223, 180, 97, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.felt-card-gold {
+  background: radial-gradient(120% 120% at 50% 0%, rgba(223, 180, 97, 0.12) 0%, rgba(12, 24, 18, 0.9) 100%);
+  border: 1px solid rgba(223, 180, 97, 0.35);
+  box-shadow: 0 0 35px -10px rgba(223, 180, 97, 0.18), inset 0 1px 0 rgba(223, 180, 97, 0.25);
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(223, 180, 97, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(223, 180, 97, 0.45);
+}
