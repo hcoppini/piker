@@ -2,11 +2,11 @@
 
 import { useGameState } from '@/hooks/useGameState';
 import LeaderboardTable from '@/components/LeaderboardTable';
-import { Trophy, Crown, ArrowLeft, Shield, Sparkles } from 'lucide-react';
+import { Trophy, Crown, ArrowLeft, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function LeaderboardPage() {
-  const { leaderboard, completedHeats, currentHeat } = useGameState();
+  const { leaderboard, completedHeats } = useGameState();
 
   const top1 = leaderboard[0];
   const top2 = leaderboard[1];
@@ -22,14 +22,6 @@ export default function LeaderboardPage() {
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Table Timer</span>
-        </Link>
-
-        <Link
-          href="/dealer"
-          className="flex items-center gap-1.5 text-xs font-semibold text-gold-300 hover:text-gold transition px-2.5 py-1.5 rounded-lg bg-gold/10 border border-gold/30"
-        >
-          <Shield className="w-3.5 h-3.5" />
-          <span>Dealer Mode</span>
         </Link>
       </div>
 

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-import { QrCode, Copy, Check, ExternalLink } from 'lucide-react';
+import { QrCode, Copy, Check, Printer, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 interface QrCodeModalProps {
   heatNumber?: number;
@@ -66,6 +67,18 @@ export default function QrCodeModal({ heatNumber, inline = false }: QrCodeModalP
           {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           <span>{copied ? 'Copied' : 'Copy'}</span>
         </button>
+      </div>
+
+      {/* Printable Paper Sign Link */}
+      <div className="mt-3 pt-3 border-t border-white/10 w-full max-w-xs flex justify-center">
+        <Link
+          href="/print"
+          target="_blank"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 text-xs font-semibold transition"
+        >
+          <Printer className="w-3.5 h-3.5" />
+          <span>Print Table Sign (Paper Stand) 🖨️</span>
+        </Link>
       </div>
     </div>
   );

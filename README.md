@@ -13,17 +13,18 @@ A fast-paced, luxury poker tournament timer and live synced leaderboard system b
 1. **Exact 11-Level Blind Structure (Doubling Every 7m)**
    - Starts at 1/2, doubling every 7 minutes.
    - By Level 5 (28–35 min) and Level 6 (35–42 min), blinds hit 15/30 and 30/60, accelerating showdowns to guarantee games finish right within the 30–40 minute party turnover window.
-2. **Instant QR Code Onboarding**
-   - Guests scan the QR code displayed on the TV or table tablet with their phone camera.
-   - Enters their name and takes their seat (Seats 1–10).
-3. **Frame-Perfect Timestamp Sync for Vercel Subdomain**
-   - Authoritative start timestamps calculate exact remaining seconds with client-side high-resolution clocks (`performance.now()`).
-   - Zero clock drift, zero battery drain, and works smoothly across all 70 phones even on cellular data or party Wi-Fi.
-4. **Host / Dealer Headquarters (`/dealer`)**
-   - Direct private access for the dealer (no PIN friction).
+2. **Instant QR Code Onboarding & Printable Table Stand**
+   - **Printable Table Stand (`/print`)**: Clean, high-contrast, print-ready page formatted for paper table tents or acrylic stands. Guests can easily scan the QR code right off the table.
+   - Guests scan the QR code with their phone camera, enter their name, and take their seat (Seats 1–10).
+3. **Private Host / Dealer Headquarters (`/dealer` or `/host`)**
+   - **Completely hidden from public navigation** so party guests cannot stumble upon or tamper with the timer.
+   - Accessible only through the private direct link (`/dealer` or `/host`).
    - Touch controls: Start, Pause, Resume, Next Level, Prev Level, +1 Min, -1 Min.
    - 1-tap Knockout button: records exact knockout positions (8th, 7th... 2nd, 1st).
    - "Crown Winner" button: announces champion, triggers golden victory confetti, and auto-saves the heat result.
+4. **Frame-Perfect Timestamp Sync for Vercel Subdomain**
+   - Authoritative start timestamps calculate exact remaining seconds with client-side high-resolution clocks (`performance.now()`).
+   - Zero clock drift, zero battery drain, and works smoothly across all 70 phones even on cellular data or party Wi-Fi.
 5. **Party-Wide Tournament Leaderboard (`/leaderboard`)**
    - Win-count ranking: ranks guests across all heats by total victories (with 2nd place finishes as tie-breakers).
    - Golden podium for the party champions.
@@ -57,54 +58,20 @@ A fast-paced, luxury poker tournament timer and live synced leaderboard system b
 
 ---
 
-## 🚀 Quick Start (Local Development)
+## 🚀 Routes Overview
 
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Start development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser:
-- `http://localhost:3000` — Player Mobile View (QR Landing)
-- `http://localhost:3000/dealer` — Dealer / Host Controls
-- `http://localhost:3000/tv` — Big Screen / Projector View
-- `http://localhost:3000/leaderboard` — Party Standings & Heat History
+- `/` — **Guest Mobile View**: Clean timer, blinds display, and seat registration.
+- `/print` — **Printable Table QR Sign**: Printable table stand / flyer to put on the poker table.
+- `/tv` — **Big Screen View**: Fullscreen view for TV or projector.
+- `/leaderboard` — **Party Leaderboard**: Standings across all heats.
+- `/dealer` or `/host` — **Private Host Headquarters**: Dedicated dealer controls (hidden from public navigation).
 
 ---
 
-## ☁️ Deploying to Vercel
+## 🖨️ How to Print the Table QR Code
 
-1. Push this project to a GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit of Party Poker Timer"
-   git branch -M main
-   git remote add origin <your-github-repo-url>
-   git push -u origin main
-   ```
-2. Go to [vercel.com](https://vercel.com) and import the repository.
-3. Deploy! Vercel will automatically build the Next.js app and assign a subdomain (e.g., `poker-night.vercel.app`).
-4. *(Optional for high-scale multi-instance cloud deployments)*: Add free Upstash Redis credentials in Vercel Project Settings (`UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`). If omitted, the app uses its high-performance in-memory and client-synced architecture.
-
----
-
-## 🃏 Party Host Protocol
-
-1. **Before the Party**:
-   - Open `/tv` on the TV/iPad near the poker table.
-   - Open `/dealer` on the host/dealer's phone.
-2. **When Guests Sit Down (Every 30–40 Minutes)**:
-   - Guests scan the QR code on the TV or dealer's phone.
-   - They enter their name to register their seat.
-   - The dealer taps **START TOURNAMENT**.
-3. **During the Match**:
-   - As players bust out, the dealer taps **Bust** next to their name.
-   - The app gives gentle 1-minute audio warnings before blinds jump.
-4. **Ending the Heat**:
-   - When the final two showdown, the dealer taps **CROWN WINNER**.
-   - Confetti & victory fanfare trigger, and the win is recorded to `/leaderboard`.
-   - Dealer taps **+ Next Heat** to seat the next group!
+1. Navigate to `/print` (or click "Print Table Sign" inside any QR code popup).
+2. Choose your layout:
+   - **Sign / Acrylic**: Formatted for standard paper in an acrylic stand or taped to the table.
+   - **Foldable Tent**: Formatted with a fold line in the center to stand directly on the felt.
+3. Click **Print Now** (or press `Ctrl+P` / `Cmd+P`). The browser will automatically hide headers, backgrounds, and toolbars, printing a crisp, black-and-white or color table sign!

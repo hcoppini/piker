@@ -9,12 +9,14 @@ export default function Navbar() {
   const pathname = usePathname();
   const { currentHeat, isAudioMuted, toggleMute } = useGameState();
 
+  // Public navigation links only — host/dealer link is hidden from public guests
   const links = [
     { href: '/', label: 'Player HUD', icon: Smartphone },
-    { href: '/dealer', label: 'Dealer', icon: Shield },
     { href: '/tv', label: 'TV Display', icon: Tv },
     { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
   ];
+
+  const isHostPage = pathname === '/dealer' || pathname === '/host';
 
   return (
     <header className="sticky top-0 z-50 border-b border-cardbg-border bg-felt-darkest/85 backdrop-blur-md px-3 sm:px-6 py-2.5">
@@ -69,6 +71,14 @@ export default function Navbar() {
               </Link>
             );
           })}
+
+          {/* Show host indicator only if currently on the private host URL */}
+          {isHostPage && (
+            <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              <Shield className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden sm:inline">Host Mode</span>
+            </span>
+          )}
 
           {/* Sound Toggle */}
           <button
